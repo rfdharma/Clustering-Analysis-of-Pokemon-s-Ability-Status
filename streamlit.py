@@ -29,7 +29,7 @@ st.write("---")
 
 df = df[df['label'] == option]
 
-if st.button('Summary'):
+if st.button('Detail'):
     # Fungsi untuk menampilkan gambar
     def display_image(image_path):
         with open(image_path, "rb") as f:
@@ -45,6 +45,14 @@ if st.button('Summary'):
         st.write("Image : ")
         display_image(row["gambar"])
         st.write("---")
+
+elif st.button('Summary'):
+    # hitung mean, median, dan modus
+    result = df.groupby('label').agg(['mean', 'median', lambda x: x.mode()[0]])
+
+    result = result.rename(columns={'<lambda_0>': 'mode'})
+
+    st.table(result)
 
 else:
     # tentukan jumlah kolom pada grid
