@@ -8,7 +8,7 @@ st.title(("Clustering Analysis of Pokemon's Ability Status"))
 
 df = pd.read_csv('output.csv', sep=';')
 
-result = pd.read_csv('result.csv', sep=';')
+result = pd.read_csv('result.csv', sep=',')
 
 # buat list berisi path dari gambar yang akan ditampilkan
 df['gambar'] = [('img/'+i) for i in df['gambar']]
