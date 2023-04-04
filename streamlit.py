@@ -31,7 +31,7 @@ st.write("---")
 
 df = df[df['label'] == option]
 
-if st.button('Detail'):
+if st.button('Containt'):
     # Fungsi untuk menampilkan gambar
     def display_image(image_path):
         with open(image_path, "rb") as f:
