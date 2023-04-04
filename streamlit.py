@@ -4,9 +4,9 @@ import numpy as np
 import pandas as pd
 
 # menampilkan teks pada tampilan Streamlit
-st.title(("Pokemon Ability Clustering Analysis"))
+st.title(("Clustering Analysis of Pokemon's Ability Status"))
 
-df = pd.read_csv('output.csv',sep=';')
+df = pd.read_csv('output.csv', sep=';')
 
 # buat list berisi path dari gambar yang akan ditampilkan
 df['gambar'] = [('img/'+i) for i in df['gambar']]
@@ -30,7 +30,7 @@ st.write("---")
 df = df[df['label'] == option]
 
 if st.button('Summary'):
-    #Fungsi untuk menampilkan gambar
+    # Fungsi untuk menampilkan gambar
     def display_image(image_path):
         with open(image_path, "rb") as f:
             image = f.read()
@@ -40,7 +40,8 @@ if st.button('Summary'):
     for index, row in df.iterrows():
         with st.container():
             st.write(f'**{row["main_name"]}**')
-            st.write(f'HP : {row["hp"]} | Attack : {row["attack"]} | Defense : {row["defense"]} | SpAtk : {row["spatk"]} | SpDef : {row["spdef"]} | Speed : {row["speed"]}')
+            st.write(
+                f'HP : {row["hp"]} | Attack : {row["attack"]} | Defense : {row["defense"]} | SpAtk : {row["spatk"]} | SpDef : {row["spdef"]} | Speed : {row["speed"]}')
         st.write("Image : ")
         display_image(row["gambar"])
         st.write("---")
@@ -95,5 +96,3 @@ else:
 #         "Age": [row["attack"]],
 #         "Image": [img_tag]
 #     })
-
-
