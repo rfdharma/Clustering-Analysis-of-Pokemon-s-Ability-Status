@@ -8,6 +8,8 @@ st.title(("Clustering Analysis of Pokemon's Ability Status"))
 
 df = pd.read_csv('output.csv', sep=';')
 
+result = pd.read_csv('result.csv', sep=';')
+
 # buat list berisi path dari gambar yang akan ditampilkan
 df['gambar'] = [('img/'+i) for i in df['gambar']]
 
@@ -47,11 +49,6 @@ if st.button('Detail'):
         st.write("---")
 
 elif st.button('Summary'):
-    # hitung mean, median, dan modus
-    result = df.groupby('label').agg(['mean', 'median', lambda x: x.mode()[0]])
-
-    result = result.rename(columns={'<lambda_0>': 'mode'})
-
     st.table(result)
 
 else:
